@@ -18,6 +18,7 @@ package com.sludev.commons.vfs2.provider.s3;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import java.util.Arrays;
@@ -170,7 +171,7 @@ public class SS3FileProvider
             
             if( region != null )
             {
-                client.setRegion(region);
+                client.setRegion(Region.getRegion(region));
             }
             
             fileSystem = new SS3FileSystem(genRootName, client, fileSystemOptions);
